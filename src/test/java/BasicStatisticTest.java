@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 public class BasicStatisticTest {
 
+    @Test
     public void nrOfItems_WhenNoneArePresent_IsZero() {
         //arrange
         BasicStatisticInterface bs = new BasicStatistic();
@@ -13,6 +14,7 @@ public class BasicStatisticTest {
         //assert
         Assert.assertSame(0, nrOfItems);
     }
+    @Test
     public void nrOfItems_AfterAdding_IsNotZero() {
         //arrange
         BasicStatisticInterface bs = new BasicStatistic();
@@ -23,6 +25,7 @@ public class BasicStatisticTest {
         Assert.assertNotSame(0, nrOfItems);
     }
 
+    @Test
     public void nrOfItems_AfterClearingData_IsZero() {
         //arrange
         BasicStatisticInterface bs = new BasicStatistic();
@@ -34,6 +37,7 @@ public class BasicStatisticTest {
         Assert.assertSame(0, nrOfItems);
     }
 
+    @Test
     public void nrOfItems_AfterAddingItems_IsIncreasedWithSameNrOfItems() {
         //arrange
         BasicStatisticInterface bs = new BasicStatistic();
@@ -44,5 +48,27 @@ public class BasicStatisticTest {
         int nrOfItems = bs.numberOfDataItems();
         //assert
         Assert.assertSame(3, nrOfItems);
+    }
+
+    @Test
+    public void sumOfItems_AfterAddingAndCalculating_IsCorrect() {
+        //arrange
+        BasicStatisticInterface bs = new BasicStatistic();
+        //act
+        bs.addDoubleToData(2.42);
+        bs.addDoubleToData(1.00);
+        bs.addDoubleToData(3.58);
+        Double sumOfItems = bs.sum();
+        //assert
+        Assert.assertSame(7, sumOfItems);
+    }
+
+    @Test void sumOfItems_WithNoItemAdded_IsZero() {
+        //arrange
+        BasicStatisticInterface bs = new BasicStatistic();
+        //act
+        Double sumOfItems = bs.sum();
+        //assert
+        Assert.assertSame(0, sumOfItems);
     }
 }
