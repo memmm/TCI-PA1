@@ -60,15 +60,16 @@ public class BasicStatisticTest {
         bs.addDoubleToData(3.58);
         Double sumOfItems = bs.sum();
         //assert
-        Assert.assertSame(7, sumOfItems);
+        Assert.assertEquals((Double)7.00, sumOfItems);
     }
 
-    @Test void sumOfItems_WithNoItemAdded_IsZero() {
+    @Test
+    public void sumOfItems_WithNoItemAdded_IsZero() {
         //arrange
         BasicStatisticInterface bs = new BasicStatistic();
         //act
         Double sumOfItems = bs.sum();
         //assert
-        Assert.assertSame(0, sumOfItems);
+        Assert.assertEquals( (Double) 0.0, sumOfItems);
     }
 }
