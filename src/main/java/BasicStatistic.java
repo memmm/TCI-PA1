@@ -18,7 +18,7 @@ public class BasicStatistic implements BasicStatisticInterface {
 
     @Override
     public void clearData(){
-
+        items.clear();
     }
 
     @Override
