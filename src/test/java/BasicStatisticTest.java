@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 public class BasicStatisticTest {
 
-    public void nrOfItemsWhenNoneArePresentIsZero() {
+    public void nrOfItems_WhenNoneArePresent_IsZero() {
         //arrange
         BasicStatisticInterface bs = new BasicStatistic();
         //act
@@ -13,7 +13,7 @@ public class BasicStatisticTest {
         //assert
         Assert.assertSame(0, nrOfItems);
     }
-    public void nrOfItemsAfterAddingIsNotZero() {
+    public void nrOfItems_AfterAdding_IsNotZero() {
         //arrange
         BasicStatisticInterface bs = new BasicStatistic();
         //act
@@ -21,5 +21,28 @@ public class BasicStatisticTest {
         int nrOfItems = bs.numberOfDataItems();
         //assert
         Assert.assertNotSame(0, nrOfItems);
+    }
+
+    public void nrOfItems_AfterClearingData_IsZero() {
+        //arrange
+        BasicStatisticInterface bs = new BasicStatistic();
+        //act
+        bs.addDoubleToData(2.42);
+        bs.clearData();
+        int nrOfItems = bs.numberOfDataItems();
+        //assert
+        Assert.assertSame(0, nrOfItems);
+    }
+
+    public void nrOfItems_AfterAddingItems_IsIncreasedWithSameNrOfItems() {
+        //arrange
+        BasicStatisticInterface bs = new BasicStatistic();
+        //act
+        bs.addDoubleToData(2.42);
+        bs.addDoubleToData(1.42);
+        bs.addDoubleToData(3.62);
+        int nrOfItems = bs.numberOfDataItems();
+        //assert
+        Assert.assertSame(3, nrOfItems);
     }
 }
